@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Gadget — Home</title>
+  <link rel="stylesheet" href="style.css">
+ </head>
+<body>
+  <header>
+    <div class="container nav">
+      <div style="display:flex;gap:1rem;align-items:center">
+        <div class="brand">
+          <div class="logo">G</div>
+          <div>
+            <div>Gadget</div>
+            <div style="font-size:.75rem;color:var(--muted);font-weight:600">Smart electronics shop</div>
+          </div>
+        </div>
+      </div>
+
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="products.htm">Products</a></li>
+          <li><a href="deals.html">Deals</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="actions">
+        <button class="icon-btn"  title="Search">
+          🔍
+        </button>
+        <button class="icon-btn" title="Account"> <a href="contact.htm">👤</a></button>
+        <button id="cartBtn" class="icon-btn" title="Cart"> <a href="add.html">🛒<span id="cartCount" style="font-size:.8rem;margin-left:.25rem"></a>0</span></button>
+        <button class="btn" > <a href="#">sign up</a></button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <div class="hero-card">
+        <h1>Latest gadgets, super deals</h1>
+        <p>Discover top phones, laptops, wearables and accessories — hand-picked and tested.</p>
+
+        <div class="search" style="margin-bottom:1rem">
+          <input id="searchInput" placeholder="Search phones, laptops, accessories..." />
+          <button class="btn" onclick="doSearch()">Search</button>
+        </div>
+
+        <div class="muted" style="margin-bottom:.8rem">Popular categories</div>
+        <div style="display:flex;gap:.6rem;flex-wrap:wrap">
+          <button class="icon-btn">Phones</button>
+          <button class="icon-btn">Laptops</button>
+          <button class="icon-btn">Headphones</button>
+          <button class="icon-btn">Smartwatches</button>
+        </div>
+
+        <div style="margin-top:1rem;display:flex;gap:.6rem;align-items:center">
+          <div style="display:flex;gap:.5rem;align-items:center">
+            <div style="width:48px;height:48px;background:#eef6ff;border-radius:8px;display:grid;place-items:center">⚡</div>
+            <div>
+              <div style="font-weight:700">Fast delivery</div>
+              <div class="muted">Across the country</div>
+            </div>
+          </div>
+
+          <div style="display:flex;gap:.5rem;align-items:center">
+            <div style="width:48px;height:48px;background:#fff9ec;border-radius:8px;display:grid;place-items:center">🔒</div>
+            <div>
+              <div style="font-weight:700">Secure payment</div>
+              <div class="muted">Multiple options</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="slide">
+        <div class="slides" id="slides">
+          <div style="min-width:100%;position:relative">
+            <img src="images/Apple AirPods (1).jpg" alt="hero1">
+            <div class="badge">50% OFF</div>
+          </div>
+          <div style="min-width:100%;position:relative">
+            <img src="images/i phone 17.jpg" alt="hero2">
+            <div class="badge">New Arrivals</div>
+          </div>
+          <div style="min-width:100%;position:relative">
+            <img src="https://images.unsplash.com/photo-1512496015851-a90fb38ba796?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=ijkl" alt="hero3">
+            <div class="badge">Limited stock</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="products" class="section">
+      <h2>Featured products</h2>
+      <div class="grid" id="productGrid">
+        <!-- Product card template used by JS -->
+      </div>
+    </section>
+
+    <section id="deals" class="section">
+      <h2>Hot deals</h2>
+      <div class="grid">
+        <div class="card">
+          <img src="https://images.unsplash.com/photo-1542751371-29b0f74f9713?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=mnop" alt="deal1">
+          <h3>Wireless Headphones X100</h3>
+          <div class="muted">Noise-cancelling • 30h battery</div>
+          <div style="display:flex;justify-content:space-between;align-items:center">
+            <div class="price">$79</div>
+            <button class="btn" onclick="addToCart('Wireless Headphones X100',79)">Add</button>
+          </div>
+        </div>
+
+        <div class="card">
+          <img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=qrst" alt="deal2">
+          <h3>Smartwatch Pro</h3>
+          <div class="muted">Health tracking • GPS</div>
+          <div style="display:flex;justify-content:space-between;align-items:center">
+            <div class="price">$129</div>
+            <button class="btn" onclick="addToCart('Smartwatch Pro',129)">Add</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="container">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:1rem;flex-wrap:wrap">
+        <div>
+          <div style="font-weight:700">Gadget</div>
+          <div class="muted">Your one-stop shop for modern electronics.</div>
+        </div>
+        <div class="muted">© Gadget 2025</div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Simple slide show
+    const slides = document.getElementById('slides');
+    let index = 0;
+    setInterval(()=>{
+      index = (index + 1) % slides.children.length;
+      slides.style.transform = `translateX(-${index * 100}%)`;
+    },3500);
+
+    // Mock product list
+    const products = [
+      {id:1,title:'Smartphone A1',price:399, img:'https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?q=80&w=800&auto=format&fit=crop&ixlib=rb-4.0.3&s=uvwx'},
+      {id:2,title:'Laptop Slim 14"',price:899, img:'https://images.unsplash.com/photo-1517336714731-489689fd1ca8?q=80&w=800&auto=format&fit=crop&ixlib=rb-4.0.3&s=yzab'},
+      {id:3,title:'Bluetooth Earbuds',price:59, img:'https://images.unsplash.com/photo-1546435770-a3e426bf472b?q=80&w=800&auto=format&fit=crop&ixlib=rb-4.0.3&s=cdef'},
+      {id:4,title:'Portable Charger 20000mAh',price:29, img:'https://images.unsplash.com/photo-1509395176047-4a66953fd231?q=80&w=800&auto=format&fit=crop&ixlib=rb-4.0.3&s=ghij'},
+    ];
+
+    const grid = document.getElementById('productGrid');
+    products.forEach(p=>{
+      const div = document.createElement('div');
+      div.className = 'card';
+      div.innerHTML = `
+        <img src="${p.img}" alt="${p.title}">
+        <h3>${p.title}</h3>
+        <div class="muted">Top seller</div>
+        <div style="display:flex;justify-content:space-between;align-items:center">
+          <div class="price">$${p.price}</div>
+          <button class="btn" onclick="addToCart('${p.title}',${p.price})">add</button>
+        </div>
+      `;
+      grid.appendChild(div);
+    });
+
+    // Cart logic (simple, in-memory)
+    let cart = [];
+    function addToCart(name,price){
+      cart.push({name,price});
+      document.getElementById('cartCount').innerText = cart.length;
+      toast(`${name} added to cart`);
+    }
+
+    function doSearch(){
+      const q = document.getElementById('searchInput').value.trim();
+      if(!q) return toast('Type something to search');
+      toast(`Searching for "${q}"...`);
+      // Example: in a real site you'd call backend and update product grid.
+    }
+
+    function toast(msg){
+      const el = document.createElement('div');
+      el.textContent = msg;
+      el.style.position = 'fixed';
+      el.style.left='50%'; el.style.transform='translateX(-50%)';
+      el.style.bottom='24px'; el.style.background='rgba(17,24,39,0.9)';
+      el.style.color='white'; el.style.padding='10px 14px'; el.style.borderRadius='10px';
+      el.style.zIndex=9999; el.style.fontSize='.95rem';
+      document.body.appendChild(el);
+      setTimeout(()=> el.style.opacity=0,2200);
+      setTimeout(()=> el.remove(),3000);
+    }
+  </script>
+</body>
+</html>

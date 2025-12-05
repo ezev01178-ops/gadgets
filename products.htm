@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Gadget — Product Page</title>
+  <link rel="stylesheet" href="style.css">
+  </head>
+<body>
+  <header>
+    <div class="container nav">
+      <div style="display:flex;gap:1rem;align-items:center">
+        <div class="brand">
+          <div class="logo">G</div>
+          <div>
+            <div>Gadget</div>
+            <div style="font-size:.75rem;color:var(--muted);font-weight:600">Smart electronics shop</div>
+          </div>
+        </div>
+      </div>
+
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="products.html">Products</a></li>
+          <li><a href="deals.html">Deals</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="actions">
+        <button class="icon-btn"  title="Search">
+          🔍
+        </button>
+        <button class="icon-btn" title="Account"> <a href="contact.htm">👤</a></button>
+        <button id="cartBtn" class="icon-btn" title="Cart"> <a href="add.html">🛒<span id="cartCount" style="font-size:.8rem;margin-left:.25rem"></a>0</span></button>
+        <button class="btn" > <a href="sign up.html">Sign up</a></button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="product">
+      <!-- Gallery -->
+      <div class="gallery">
+        <img id="mainImg" src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?q=80&w=1200&auto=format&fit=crop" alt="product">
+        <div class="thumbs">
+          <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?q=80&w=600" class="active" onclick="swapImg(this)">
+          <img src="https://images.unsplash.com/photo-1510557880182-3d4d3d38a3d6?q=80&w=600" onclick="swapImg(this)">
+          <img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?q=80&w=600" onclick="swapImg(this)">
+        </div>
+      </div>
+
+      <!-- Info -->
+      <div class="info">
+        <h1>Smartphone A1 — 128GB</h1>
+        <div class="muted">High‑performance chipset • 48MP camera • 5000mAh battery</div>
+        <div class="price">$399</div>
+        <div class="muted">Free nationwide delivery • Secure payment</div>
+
+        <button class="btn" onclick="addToCart()">Add to Cart</button>
+      </div>
+    </section>
+
+    <!-- Specifications -->
+    <section class="specs">
+      <h2>Specifications</h2>
+      <div class="spec-grid">
+        <div class="spec-item"><strong>Display</strong><span>6.5" AMOLED, 120Hz</span></div>
+        <div class="spec-item"><strong>Camera</strong><span>48MP wide + 12MP ultra-wide</span></div>
+        <div class="spec-item"><strong>Battery</strong><span>5000mAh fast charge</span></div>
+        <div class="spec-item"><strong>Storage</strong><span>128GB / 256GB</span></div>
+        <div class="spec-item"><strong>Chipset</strong><span>Octa‑core 2.8GHz</span></div>
+        <div class="spec-item"><strong>Network</strong><span>5G + Dual SIM</span></div>
+      </div>
+    </section>
+  </main>
+
+  <footer>© Gadget 2025 — Product Page</footer>
+
+  <script>
+    function swapImg(el){
+      const main = document.getElementById('mainImg');
+      main.src = el.src;
+      document.querySelectorAll('.thumbs img').forEach(i=>i.classList.remove('active'));
+      el.classList.add('active');
+    }
+
+    function addToCart(){
+      alert('Added to Cart ✔');
+    }
+  </script>
+</body>
+</html>
